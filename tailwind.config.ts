@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -61,13 +62,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        success: 'hsl(var(--color-success))', // PRD: #28A745
+        accentSecondaryPrd: 'hsl(var(--color-accent-secondary-prd))', // PRD: #FFCA28
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', /* With --radius: 0.5rem, this is 0.5rem */
+				md: 'calc(var(--radius) - 2px)', /* This will be 0.375rem, matching PRD 'rounded-md' */
+				sm: 'calc(var(--radius) - 4px)', /* This will be 0.25rem */
+        full: '9999px' /* Added for PRD buttons: 'rounded-full' */
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
